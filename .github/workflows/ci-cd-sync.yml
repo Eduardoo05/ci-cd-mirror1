@@ -88,6 +88,8 @@ jobs:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
           echo "Sincronizando ci-cd-mirror1"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git remote remove mirror1 || true
           git remote add mirror1 https://x-access-token:${MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror1.git
           git push --force mirror1 main:main
@@ -97,6 +99,8 @@ jobs:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
           echo "Sincronizando ci-cd-mirror2"
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
           git remote remove mirror2 || true
           git remote add mirror2 https://x-access-token:${MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror2.git
           git push --force mirror2 main:main
