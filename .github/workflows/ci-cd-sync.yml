@@ -80,8 +80,8 @@ jobs:
 
       - name: Configure Git
         run: |
-          git config --global user.name "Eduardo Franco"
-          git config --global user.email "franco193@hotmail.com"
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
 
       - name: Push to Mirror 1
         env:
