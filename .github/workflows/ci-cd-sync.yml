@@ -83,14 +83,14 @@ jobs:
           git config --global user.name "Eduardo Franco"
           git config --global user.email "franco193@hotmail.com"
 
-      - name: Push to mirror1
+      - name: mirror1
         env:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
           echo "Sincronizando ci-cd-mirror1"
-          git remote remove ci-cd-mirror1 || true
-          git remote add ci-cd-mirror1 https://x-access-token:${secrets.MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror1.git
-          git push --force ci-cd-mirror1 main:main
+          git remote remove mirror1 || true
+          git remote add mirror1 https://x-access-token:${secrets.MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror1.git
+          git push --force mirror1 main:main
       
       - name: Push to mirror2
         env:
