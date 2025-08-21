@@ -88,9 +88,9 @@ jobs:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
           echo "Sincronizando ci-cd-mirror1"
-          git remote remove || true
-          git remote add https://x-access-token:${secrets.MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror1.git
-          git push --force main:main
+          git remote remove ci-cd-mirror1 || true
+          git remote add ci-cd-mirror1 https://x-access-token:${secrets.MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror1.git
+          git push --force ci-cd-mirror1 main:main
       
       - name: Push to mirror2
         env:
