@@ -6,7 +6,7 @@ on:
       - main
 
 permissions:
-  contents: read
+  contents: write
   id-token: write
 
 jobs:
@@ -83,20 +83,20 @@ jobs:
           git config --global user.name "Eduardo Franco"
           git config --global user.email "franco193@hotmail.com"
 
-      - name: Push to Mirror 1
+      - name: Push to mirror1
         env:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
           echo "Sincronizando ci-cd-mirror1"
           git remote remove mirror1 || true
-          git remote add mirror1 https://x-access-token:${MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror1.git
+          git remote add mirror1 https://x-access-token:${secrets.MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror1.git
           git push --force mirror1 main:main
       
-      - name: Push to Mirror 2
+      - name: Push to mirror2
         env:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
           echo "Sincronizando ci-cd-mirror2"
           git remote remove mirror2 || true
-          git remote add mirror2 https://x-access-token:${MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror2.git
+          git remote add mirror2 https://x-access-token:${secrets.MIRROR_TOKEN}@github.com/Eduardoo05/ci-cd-mirror2.git
           git push --force mirror2 main:main
