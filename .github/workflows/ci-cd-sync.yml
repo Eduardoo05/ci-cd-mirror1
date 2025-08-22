@@ -77,6 +77,7 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+          token: ${{ secrets.MIRROR_TOKEN }}
 
       - name: Configure Git
         run: |
@@ -95,19 +96,15 @@ jobs:
           fi
 
       - name: Push to mirror1
-        env:
-          MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
           echo "Sincronizando ci-cd-mirror1"
           git remote remove mirror1 || true
-          git remote add mirror1 https://x-access-token:$MIRROR_TOKEN@github.com/Eduardoo05/ci-cd-mirror1.git
+          git remote add mirror1 https://github.com/Eduardoo05/ci-cd-mirror1.git
           git push --force mirror1 main:main
       
       - name: Push to mirror2
-        env:
-          MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
           echo "Sincronizando ci-cd-mirror2"
           git remote remove mirror2 || true
-          git remote add mirror2 https://x-access-token:$MIRROR_TOKEN@github.com/Eduardoo05/ci-cd-mirror2.git
+          git remote add mirror2 https://github.com/Eduardoo05/ci-cd-mirror2.git
           git push --force mirror2 main:main
