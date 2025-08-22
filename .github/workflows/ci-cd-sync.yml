@@ -83,7 +83,18 @@ jobs:
           git config --global user.name "Eduardo Franco"
           git config --global user.email "franco193@hotmail.com"
 
-      - name: mirror1
+      - name: Debug Token Presence
+        env:
+          MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
+        run: |
+          if [ -z "$MIRROR_TOKEN" ]; then
+            echo "Error: MIRROR_TOKEN is not set or empty"
+            exit 1
+          else
+            echo "MIRROR_TOKEN is set (length: ${#MIRROR_TOKEN})"
+          fi
+
+      - name: Push to mirror1
         env:
           MIRROR_TOKEN: ${{ secrets.MIRROR_TOKEN }}
         run: |
